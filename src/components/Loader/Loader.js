@@ -1,14 +1,13 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import  {Audio} from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import './LoaderBars.css'
+import './Loader.css'
 
 const loaderRef = document.querySelector('#loader-root');
 
-const LoaderModal = () => {
+const Loader = () => {
   return createPortal(
-    <div className="Loader">
+    <div className="LoaderBars">
       <Audio
     height="100"
     width="100"
@@ -20,4 +19,4 @@ const LoaderModal = () => {
   );
 };
 
-export default LoaderModal;
+export default Loader;
