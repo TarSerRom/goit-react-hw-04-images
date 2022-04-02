@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import fetchImages from 'services/apiService';
-import LoaderModal from './Loader/Loader';
+import Loader from './Loader/Loader';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import Modal from './Modal/Modal';
-import { ToastContainer } from 'react-toastify';;
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
     <div>
       <Searchbar onHandleSubmit={renderImages} />
 
-      {isLoading && <LoaderModal />}
+      {isLoading && <Loader />}
 
       {images.length > 0 && !error && (
         <ImageGallery images={images} onOpenModal={onOpenModal} />
@@ -74,7 +74,13 @@ function App() {
       {!isLoading && images.length > 0 && !error && (
         <Button onLoadMore={onLoadMore} />
       )}
-
+      {images.length === 0 ? (
+        <div>
+          <p>По запросу</p>
+          <p>{query}</p>
+          <p>ничего не найдено</p>
+        </div>
+      ) : null}
       {showModal && (
         <Modal onToggleModal={toggleModal} largeImageURL={largeImageURL} />
       )}
